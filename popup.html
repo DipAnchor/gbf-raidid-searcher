@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='ja'>
+	<head>
+		<meta charset='utf-8'>
+		<title></title>
+		<style>
+			.span1{float:left;}
+			.lli{width:200px;font:14px;height:30px;line-height:30px;border-bottom:1px solid black;}
+			.lli:hover{background-color: #1a0dab;color:white;}
+			.cid{float:left;width:60px;margin-left:10px;}
+			.time{float:left;width:120px;}
+			.popup{
+				width:120px;height:25px;text-align: center;line-hight:25px;padding-top:5px;
+				position: absolute;background-color: rgba(0,0,0,0.8);
+				border-radius:15px;margin:120px 40px;color:white;display:none;
+				}
+		</style>
+	</head>
+	<body>
+		ジッタ検索
+		<div style="width:200px">
+			<span class="span1"><input type="search" id="search" value="" style="width:150px" placeholder="ここに検索キーワードを入力してください" /></span>
+			<span class="span1"><input type="submit" id="submit" style="height:21px" value="検索" /></span>
+		</div>
+		<div >
+			<span class="span2">
+				<select class="select">
+					<option value="-1" selected="selected">快</option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+					<option value="" ></option>
+				</select>
+			</span>
+			<span class="span2">
+				
+			</span>
+			<span class="span2">
+				
+			</span>
+			<span class="span2">
+				
+			</span>
+		</div>
+		<div class="popup"></div>
+		<div id="showarea"><div></div></div>
+		<script src="js/jquery.js"></script>
+		<script src="js/save.js"></script>
+	</body>
+</html>		

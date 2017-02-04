@@ -1,0 +1,14 @@
+{
+	"name": "ジッタ検索",
+	"version": "2",
+	"manifest_version": 2,
+	"description": "ジッタ検索",
+	"browser_action": {
+		"default_icon": "image/icon2.png",
+		"default_popup": "popup.html"
+	},
+    "permissions":[
+        "http://realtime.search.yahoo.co.jp/autoscrolljs?p=*",
+        "clipboardWrite"
+    ]
+}
