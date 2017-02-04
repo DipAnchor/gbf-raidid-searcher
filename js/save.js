@@ -1,12 +1,14 @@
 var submit = document.getElementById("submit");
 var lasttime=localStorage.lasttime;
-$(function(){search();bindse();})
+$(function(){if(document.getElementById("search").value.trim()!=""){
+	search();}bindse();})
 if (localStorage.keyword){ document.getElementById("search").value=localStorage.keyword;}
 submit.addEventListener('click',function(){
 	var search_word = document.getElementById("search").value;
 	localStorage.keyword = search_word;
 	$("#showarea").html("<div></div>");
-	search();
+	if(document.getElementById("search").value.trim()!=""){
+	search();}
 },false);
 
 function search(){
