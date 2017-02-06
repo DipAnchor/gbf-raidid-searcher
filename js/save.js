@@ -1,5 +1,10 @@
 var submit = document.getElementById("submit");
 var lasttime=localStorage.lasttime;
+if(localStorage.selected&&localStorage.selected.length>=160){
+	console.log(localStorage.selected.length);
+	localStorage.selected=localStorage.selected.substr(8,160);
+	console.log(localStorage.selected.length);
+	}
 $(function(){if(document.getElementById("search").value.trim()!=""){
 	search();}bindse();})
 if (localStorage.keyword){ document.getElementById("search").value=localStorage.keyword;}
@@ -25,7 +30,9 @@ $.get("http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="+document.getElemen
 			var timej=info.find("a").last();
 			var timea=timej.attr("title");
 			var timeb=timej.html();
-			var str="<div class='lli'><div class='cid'>"+cid+"</div><div class='time'><div>"+timea+"&nbsp;&nbsp;"+timeb+"</div></div></div>"
+			var selword=localStorage.selected?localStorage.selected:"";
+			var selected=selword.indexOf(cid)>0?"selected":"";
+			var str="<div class='lli "+selected+"'><div class='cid'>"+cid+"</div><div class='time'><div>"+timea+"&nbsp;&nbsp;"+timeb+"</div></div></div>"
 			$("#showarea").children().last().append(str);
 		}
 	});
@@ -34,7 +41,11 @@ $.get("http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="+document.getElemen
 };
 
 function bindli(){
-	$(".lli").on("click",function(){copyTextToClipboard($(this).find(".cid").html());});
+	$(".lli").on("click",function(){
+		copyTextToClipboard($(this).find(".cid").html());
+		localStorage.selected=localStorage.selected+$(this).find(".cid").html();
+		$(this).addClass("selected");
+		});
 }
 function bindse(){
 	$("select").on("change",function(){
