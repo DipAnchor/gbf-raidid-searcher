@@ -1,24 +1,34 @@
 var submit = document.getElementById("submit");
 var lasttime=localStorage.lasttime;
+var alowsearch=1;
 if(localStorage.selected&&localStorage.selected.length>=160){
 	console.log(localStorage.selected.length);
 	localStorage.selected=localStorage.selected.substr(8,160);
 	console.log(localStorage.selected.length);
 	}
-$(function(){if(document.getElementById("search").value.trim()!=""){
-	search();}bindse();})
+$(function(){if(document.getElementById("search").value.trim()!=""){search();}bindse();})
+
 if (localStorage.keyword){ document.getElementById("search").value=localStorage.keyword;}
-submit.addEventListener('click',function(){
+
+submit.addEventListener('click',function (){
 	var search_word = document.getElementById("search").value;
 	localStorage.keyword = search_word;
-	$("#showarea").html("<div></div>");
-	if(document.getElementById("search").value.trim()!=""){
-	search();}
+	if(document.getElementById("search").value.trim()!=""&&alowsearch==1){
+	search();
+	alowsearch=0;
+	var timer1=setTimeout(function(){
+		alowsearch=1;
+		console.log("ding!"+alowsearch);
+		clearTimeout(timer1);
+		},2000);
+	}else{message("click too fast!");}
 },false);
 
 function search(){
+
 $.get("http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="+document.getElementById("search").value,function(result){
 	var i=1;
+	$("#showarea").html("<div></div>");
 	$(result).find(".cnt.cf").not(".TS2bh").each(function(){
 		if (i>6){bindli();return false;}else{i++;}
 		var content=$(this).find("h2").text();
@@ -50,7 +60,9 @@ function bindli(){
 function bindse(){
 	$("select").on("change",function(){
 		if($(this).children('option:selected').val()!=-1){
-			document.getElementById("search").value=$(this).children('option:selected').val();submit.click();}
+			document.getElementById("search").value=$(this).children('option:selected').val();
+			alowsearch=1;
+			submit.click();}
 			});
 }
 function copyTextToClipboard(text) {
