@@ -8,7 +8,8 @@
 		"default_popup": "popup.html"
 	},
     "permissions":[
-        "http://realtime.search.yahoo.co.jp/autoscrolljs?p=*",
+        "http://search.yahoo.co.jp/",
+        "https://search.yahoo.co.jp/",
         "clipboardWrite"
     ]
 }
