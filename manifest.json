@@ -8,8 +8,8 @@
 		"default_popup": "popup.html"
 	},
     "permissions":[
-        "http://search.yahoo.co.jp/",
-        "https://search.yahoo.co.jp/",
+        "http://*/",
+        "https://*/",
         "clipboardWrite"
     ]
 }

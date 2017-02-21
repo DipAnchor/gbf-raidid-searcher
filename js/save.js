@@ -26,7 +26,7 @@ submit.addEventListener('click',function (){
 
 function search(){
 
-$.get("http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="+document.getElementById("search").value,function(result){
+$.get("http://realtime.search.yahoo.co.jp/search?ei=UTF-8&p="+document.getElementById("search").value+"/",function(result){
 	var i=1;
 	$("#showarea").html("<div></div>");
 	$(result).find(".cnt.cf").not(".TS2bh").each(function(){
